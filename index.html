@@ -1158,54 +1158,55 @@ function displayProducts(list){
         return;
     }
 
-    grid.innerHTML = list.map(product => `
+    
+grid.innerHTML = list.map(product => `
 
-        <div class="product">
+    <div class="product">
 
-            <div
-                class="product-image"
-                onclick="showProduct(${product.id})"
-            >
-                ${product.icon}
+        <div
+            class="product-image"
+            onclick="showProduct(${product.id})"
+        >
+            ${product.icon}
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-category">
+                ${product.category}
             </div>
 
-            <div class="product-info">
+            <h3>
+                ${product.name}
+            </h3>
 
-                <div class="product-category">
-                    ${product.category}
-                </div>
+            <div class="price">
+                ${formatPrice(product.price)}
+            </div>
 
-                <h3>
-                    ${product.name}
-                </h3>
+            <div class="product-buttons">
 
-                <div class="price">
-                    ${formatPrice(product.price)}
-                </div>
+                <button
+                    class="add-btn"
+                    onclick="addToCart(${product.id})"
+                >
+                    Add to Cart
+                </button>
 
-                <div class="product-buttons">
-
-                    <button
-                        class="add-btn"
-                        onclick="addToCart(${product.id})"
-                    >
-                        Add to Cart
-                    </button>
-
-                    <button
-                        class="buy-btn"
-                        onclick="buyNow(${product.id})"
-                    >
-                        Buy Now
-                    </button>
-
-                </div>
+                <button
+                    class="buy-btn"
+                    onclick="buyNow(${product.id})"
+                >
+                    Buy Now
+                </button>
 
             </div>
 
         </div>
 
-    `).join("");
+    </div>
+
+`).join('');
 
 }
 
